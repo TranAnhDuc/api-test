@@ -23,3 +23,4 @@ $router->get('user/{id}', 'UsersController@get');
 $router->post('user', 'UsersController@add');
 $router->put('user/{id}', 'UsersController@put');
 $router->delete('user/{id}', 'UsersController@remove');
+$router->post('user:batchDelete', 'UsersController@batchRemove');

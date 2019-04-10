@@ -46,6 +46,17 @@ trait RESTActions {
         return $this->respond(Response::HTTP_NO_CONTENT);
     }
 
+    public function batchRemove(Request $request)
+    {
+        $ids = $request->all()['ids'];
+        foreach ($ids as $id) {
+            if (!is_null($this->repo->show($id))) {
+                $this->repo->delete($id);
+            }
+        }
+        return $this->respond(Response::HTTP_NO_CONTENT);
+    }
+
     protected function respond($status, $data = [])
     {
         return response()->json($data, $status);
