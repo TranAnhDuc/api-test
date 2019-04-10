@@ -12,7 +12,7 @@ class Role extends Model {
 
     protected $dates = [];
 
-    public static $rules = [
+    protected $rules = [
         // Validation rules
     ];
 

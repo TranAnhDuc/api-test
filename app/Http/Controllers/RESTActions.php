@@ -22,14 +22,14 @@ trait RESTActions {
 
     public function add(Request $request)
     {
-        $this->validate($request, $this->repo->getModel()->rules);
+        $this->validate($request, $this->repo->getModel()::$rules);
         return $this->respond(Response::HTTP_CREATED, $this->repo->create($request->all()));
     }
 
     public function put(Request $request, $id)
     {
-        $this->validate($request, $this->repo->getModel()::rules);
-        $model = $this->repo->find($id);
+        $this->validate($request, $this->repo->getModel()::$rules);
+        $model = $this->repo->show($id);
         if(is_null($model)){
             return $this->respond(Response::HTTP_NOT_FOUND);
         }
@@ -39,7 +39,7 @@ trait RESTActions {
 
     public function remove($id)
     {
-        if(is_null($this->repo->find($id))){
+        if(is_null($this->repo->show($id))){
             return $this->respond(Response::HTTP_NOT_FOUND);
         }
         $this->repo->delete($id);
