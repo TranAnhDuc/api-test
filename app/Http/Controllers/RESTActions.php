@@ -8,46 +8,41 @@ trait RESTActions {
 
     public function all()
     {
-        $m = self::MODEL;
-        return $this->respond(Response::HTTP_OK, $m::all());
+        return $this->respond(Response::HTTP_OK, $this->repo->all());
     }
 
     public function get($id)
     {
-        $m = self::MODEL;
-        $model = $m::find($id);
+        $model = $this->repo->show($id);
         if(is_null($model)){
             return $this->respond(Response::HTTP_NOT_FOUND);
-        }
+        }   
         return $this->respond(Response::HTTP_OK, $model);
     }
 
     public function add(Request $request)
     {
-        $m = self::MODEL;
-        $this->validate($request, $m::$rules);
-        return $this->respond(Response::HTTP_CREATED, $m::create($request->all()));
+        $this->validate($request, $this->repo->getModel()->rules);
+        return $this->respond(Response::HTTP_CREATED, $this->repo->create($request->all()));
     }
 
     public function put(Request $request, $id)
     {
-        $m = self::MODEL;
-        $this->validate($request, $m::$rules);
-        $model = $m::find($id);
+        $this->validate($request, $this->repo->getModel()::rules);
+        $model = $this->repo->find($id);
         if(is_null($model)){
             return $this->respond(Response::HTTP_NOT_FOUND);
         }
-        $model->update($request->all());
+        $model = $this->repo->update($request->all(), $id);
         return $this->respond(Response::HTTP_OK, $model);
     }
 
     public function remove($id)
     {
-        $m = self::MODEL;
-        if(is_null($m::find($id))){
+        if(is_null($this->repo->find($id))){
             return $this->respond(Response::HTTP_NOT_FOUND);
         }
-        $m::destroy($id);
+        $this->repo->delete($id);
         return $this->respond(Response::HTTP_NO_CONTENT);
     }
 

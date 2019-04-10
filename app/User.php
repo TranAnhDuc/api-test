@@ -29,4 +29,17 @@ class User extends Model implements AuthenticatableContract, AuthorizableContrac
     protected $hidden = [
         'password',
     ];
+
+    public static $rules = [
+        'name' => 'required|max:50',
+        'email' => 'required|email',
+        'password' => 'required|min:7',
+        'role_id' => 'required|exists:roles'
+    ];
+
+    // Relationships
+    public function role()
+    {
+        return $this->belongsTo('App\Role')->select(array('id', 'role_name'));
+    }
 }
