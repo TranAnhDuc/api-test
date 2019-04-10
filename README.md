@@ -4,7 +4,7 @@
   - Setup server & database of your choice
   - Use git to deploy code
   
-  Run from command line:
+    Run from command line:
 
   ```
   git clone https://github.com/TranAnhDuc/api-test.git
