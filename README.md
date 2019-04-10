@@ -3,20 +3,27 @@
 - Setup & Running instruction:
   - Setup server & database of your choice
   - Use git to deploy code: git clone https://github.com/TranAnhDuc/api-test.git
-  - Get vendor libraries:
-    - Run: 
+  - Get vendor libraries
+    
+    Run from command line: 
+    
     ```
     composer install
     ```
   - Add .evn file
     - Modify from .env.example
     - Set correct database connection
-  - Create database structure and seed data:
-    > Run:
+  - Create database structure and seed data
+    
+    Run from command line:
+    
     ```
     php artisan migrate:fresh --seed
     ```
-- Test instruction: Use Curl command, replace the variables inside angle bracket (such as `<hosted-domain>`, `<id>`, `<ids>`) to execute and check results
+- Test instruction:
+
+Use Curl command, replace the variables inside angle bracket (such as `<hosted-domain>`, `<id>`, `<ids>`) to execute and check results.
+
   - View All Users:
   ```
   curl -X GET -H 'Content-Type: application/json' -i 'http://<hosted-domain>/user'
@@ -39,5 +46,5 @@
   ```
   - View user’s details (including assigned roles):
   ```
-  curl -X GET -H 'Content-Type: application/json' -i 'http://`<hosted-domain>`/user/`<id>`
+  curl -X GET -H 'Content-Type: application/json' -i 'http://<hosted-domain>/user/<id>
   ```
