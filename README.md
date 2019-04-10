@@ -6,9 +6,9 @@
   
     Run from command line:
 
-  ```
-  git clone https://github.com/TranAnhDuc/api-test.git
-  ```
+    ```
+    git clone https://github.com/TranAnhDuc/api-test.git
+    ```
   - Get vendor libraries
     
     Run from command line: 
