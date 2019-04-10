@@ -28,7 +28,7 @@
     ```
 - Test instruction:
 
-Use Curl command, replace the variables inside angle bracket (such as `<hosted-domain>`, `<id>`, `<ids>`) to execute and check results.
+  Use Curl command, replace the variables inside angle bracket (such as `<hosted-domain>`, `<id>`, `<ids>`) to execute and check results.
 
   - View All Users:
   ```
