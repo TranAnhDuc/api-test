@@ -54,3 +54,5 @@
   ```
   curl -X GET -H 'Content-Type: application/json' -i 'http://<hosted-domain>/user/<id>
   ```
+- Limitation:
+  - Data verification is only done for create/update
